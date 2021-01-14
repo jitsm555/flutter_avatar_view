@@ -1,9 +1,7 @@
 name: avatar_view
 description: A new Flutter application.
 version:0.0.1
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+homepage: https://github.com/jitsm555/flutter_avatar_view
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
