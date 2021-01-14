@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                /// 1. Circular Image without border
+                /// 1. Circular AvatarView Without Border
                 AvatarView(
                   radius: 60,
                   borderColor: Colors.yellow,
@@ -61,13 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 16,),
-                /// 2. Circular Image with border
+                /// 2. Circular AvatarView With Border
                 AvatarView(
                   radius: 60,
                   borderWidth: 8,
                   borderColor: Colors.yellow,
-                  isOnlyText: false,
-                  text: Text('C', style: TextStyle(color: Colors.white, fontSize: 50),),
                   avatarType: AvatarType.CIRCLE,
                   backgroundColor: Colors.red,
                   imagePath:
@@ -80,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 16,),
-                /// 3. Rectangle Image without border
+                /// 3. Rectangular AvatarView Without Border
                 AvatarView(
                   radius: 60,
                   borderColor: Colors.grey,
@@ -96,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 SizedBox(height: 16,),
-                /// 4. Rectangle Image with border
+                /// 4. Rectangular AvatarView With Border
                 AvatarView(
                   radius: 60,
                   borderWidth: 8,
