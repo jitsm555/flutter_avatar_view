@@ -8,7 +8,7 @@ AvatarView is a library which will help developers to create circular as well as
    - [Rectangular AvatarView Without Border](#rectangular-avatarView-without-border)
    - [Rectangular AvatarView With Border](#rectangular-avatarView-with-border)
    
-<img src="images/avatar_1.png" height="400" alt="Screenshot"/>       <img src="images/avatar_2.png" height="400" alt="Screenshot"/> 
+<img src="https://github.com/jitsm555/flutter_avatar_view/blob/master/images/avatar_1.png" height="400" alt="Screenshot"/>       <img src="https://github.com/jitsm555/flutter_avatar_view/blob/master/images/avatar_1.png" height="400" alt="Screenshot"/> 
 
 #### Circular AvatarView Without Border
 ```dart
