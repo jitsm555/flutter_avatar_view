@@ -58,7 +58,7 @@ class RectangularWidget extends StatelessWidget {
                 )
               : ClipRRect(
                   borderRadius: BorderRadius.circular(radius / 2),
-                  child: CachedNetworkImage(
+                  child: imagePath.contains("http") ? CachedNetworkImage(
                     imageUrl: imagePath,
                     fit: BoxFit.cover,
                     placeholder: (context, url) {
@@ -67,7 +67,7 @@ class RectangularWidget extends StatelessWidget {
                     errorWidget: (context, url, error) {
                       return errorWidget;
                     },
-                  ),
+                  ) : Image.asset(imagePath, fit: BoxFit.cover,),
                 ),
     );
   }

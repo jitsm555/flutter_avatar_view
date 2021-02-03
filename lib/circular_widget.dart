@@ -33,7 +33,8 @@ class CircularWidget extends StatelessWidget {
       child: Container(
           padding: EdgeInsets.all(borderWidth),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(radius), color: backgroundColor),
+              borderRadius: BorderRadius.circular(radius),
+              color: backgroundColor),
           child: Center(child: text)),
     );
   }
@@ -46,26 +47,29 @@ class CircularWidget extends StatelessWidget {
       padding: EdgeInsets.all(borderWidth),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius), color: borderColor),
-      child: isOnlyText ? getTextWidget() :
-      imagePath.isEmpty
+      child: isOnlyText
+          ? getTextWidget()
+          : imagePath.isEmpty
               ? ClipRRect(
-                      borderRadius: BorderRadius.circular(radius),
-                      child: Container(
-                        color: backgroundColor,
-                      ),
-                    )
+                  borderRadius: BorderRadius.circular(radius),
+                  child: Container(
+                    color: backgroundColor,
+                  ),
+                )
               : ClipRRect(
                   borderRadius: BorderRadius.circular(radius),
-                  child: CachedNetworkImage(
-                    imageUrl: imagePath,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) {
-                      return placeHolder;
-                    },
-                    errorWidget: (context, url, error) {
-                      return errorWidget;
-                    },
-                  ),
+                  child: imagePath.contains("http")
+                      ? CachedNetworkImage(
+                          imageUrl: imagePath,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) {
+                            return placeHolder;
+                          },
+                          errorWidget: (context, url, error) {
+                            return errorWidget;
+                          },
+                        )
+                      : Image.asset(imagePath, fit: BoxFit.cover),
                 ),
     );
   }
