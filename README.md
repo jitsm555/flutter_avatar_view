@@ -1,5 +1,5 @@
 # Flutter AvatarView
-AvatarView is a library which will help developers to create circular as well as rectangular avatar which includes some key features. 
+AvatarView is a library which will help developers to create circular as well as rectangular avatar(Using Network path or Assets path) which includes some key features. 
 
 ## Table of contents
 - **[✨ Features](#-features)**
@@ -84,6 +84,8 @@ AvatarView is a library which will help developers to create circular as well as
                 ),
 
 ```               
+
+
 
 Please refer examples under example packabge. 
 
