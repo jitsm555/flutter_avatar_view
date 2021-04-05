@@ -14,13 +14,14 @@ class AssetExamples extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
+                SizedBox(height: 50,), 
                 /// 1. Circular AvatarView Without Border
                 AvatarView(
                   radius: 60,
                   borderColor: Colors.yellow,
                   isOnlyText: false,
                   text: Text('C', style: TextStyle(color: Colors.white, fontSize: 50),),
-                  avatarType: AvatarType.CIRCLE,
+                  avatarType: AvatarType.RECTANGLE,
                   backgroundColor: Colors.red,
                   imagePath: "assets/image_1.png",
                   placeHolder: Container(
@@ -36,7 +37,7 @@ class AssetExamples extends StatelessWidget {
                   radius: 60,
                   borderWidth: 8,
                   borderColor: Colors.yellow,
-                  avatarType: AvatarType.CIRCLE,
+                  avatarType: AvatarType.RECTANGLE,
                   backgroundColor: Colors.red,
                   imagePath: "assets/image_1.png",
                   placeHolder: Container(

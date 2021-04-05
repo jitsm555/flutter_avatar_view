@@ -9,24 +9,24 @@ class AvatarView extends StatefulWidget {
 
   final double borderWidth;
 
-  final Color borderColor;
+  final Color? borderColor;
 
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
-  final Color foregroundColor;
+  final Color? foregroundColor;
 
   final String imagePath;
 
-  final Text text;
+  final Text? text;
 
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
-  final Widget placeHolder;
+  final Widget? placeHolder;
 
-  final Widget errorWidget;
+  final Widget? errorWidget;
 
   const AvatarView(
-      {Key key,
+      {Key? key,
       this.avatarType = AvatarType.CIRCLE,
       this.isOnlyText = false,
       this.radius = 50,
