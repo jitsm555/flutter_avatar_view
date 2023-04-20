@@ -2,7 +2,7 @@ import 'package:avatar_view/src/circular_widget.dart';
 import 'package:avatar_view/src/rectangular_widget.dart';
 import 'package:flutter/material.dart';
 
-class AvatarView extends StatefulWidget {
+class AvatarView extends StatelessWidget {
   final AvatarType avatarType;
   final bool isOnlyText;
   final double radius;
@@ -25,55 +25,53 @@ class AvatarView extends StatefulWidget {
 
   final Widget? errorWidget;
 
-  const AvatarView(
-      {Key? key,
-      this.avatarType = AvatarType.CIRCLE,
-      this.isOnlyText = false,
-      this.radius = 50,
-      this.borderWidth = 0,
-      this.borderColor,
-      this.backgroundColor,
-      this.foregroundColor,
-      this.imagePath = "",
-      this.text,
-      this.onTap,
-      this.placeHolder,
-      this.errorWidget})
-      : super(key: key);
+  final Map<String, String>? headers;
 
-  @override
-  _AvatarViewState createState() => _AvatarViewState();
-}
+  const AvatarView({
+    Key? key,
+    this.avatarType = AvatarType.CIRCLE,
+    this.isOnlyText = false,
+    this.radius = 50,
+    this.borderWidth = 0,
+    this.borderColor,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.imagePath = "",
+    this.text,
+    this.onTap,
+    this.placeHolder,
+    this.errorWidget,
+    this.headers,
+  }) : super(key: key);
 
-class _AvatarViewState extends State<AvatarView> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.onTap,
-      child: widget.avatarType == AvatarType.CIRCLE
+      onTap: onTap,
+      child: avatarType == AvatarType.CIRCLE
           ? CircularWidget(
-              backgroundColor: widget.backgroundColor,
-              borderColor: widget.borderColor,
-              borderWidth: widget.borderWidth,
-              errorWidget: widget.errorWidget,
-              placeHolder: widget.placeHolder,
-              imagePath: widget.imagePath,
-              radius: widget.radius,
-              foregroundColor: widget.foregroundColor,
-              text: widget.text,
-              isOnlyText: widget.isOnlyText,
+              backgroundColor: backgroundColor,
+              borderColor: borderColor,
+              borderWidth: borderWidth,
+              errorWidget: errorWidget,
+              placeHolder: placeHolder,
+              imagePath: imagePath,
+              radius: radius,
+              foregroundColor: foregroundColor,
+              text: text,
+              isOnlyText: isOnlyText,
             )
           : RectangularWidget(
-              backgroundColor: widget.backgroundColor,
-              borderColor: widget.borderColor,
-              borderWidth: widget.borderWidth,
-              errorWidget: widget.errorWidget,
-              placeHolder: widget.placeHolder,
-              imagePath: widget.imagePath,
-              radius: widget.radius,
-              foregroundColor: widget.foregroundColor,
-              text: widget.text,
-              isOnlyText: widget.isOnlyText,
+              backgroundColor: backgroundColor,
+              borderColor: borderColor,
+              borderWidth: borderWidth,
+              errorWidget: errorWidget,
+              placeHolder: placeHolder,
+              imagePath: imagePath,
+              radius: radius,
+              foregroundColor: foregroundColor,
+              text: text,
+              isOnlyText: isOnlyText,
             ),
     );
   }

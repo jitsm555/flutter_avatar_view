@@ -12,20 +12,22 @@ class RectangularWidget extends StatelessWidget {
   final Color? foregroundColor;
   final Widget? placeHolder;
   final Widget? errorWidget;
+  final Map<String, String>? headers;
 
-  const RectangularWidget(
-      {Key? key,
-      this.radius,
-      this.borderWidth,
-      this.imagePath,
-      this.backgroundColor,
-      this.foregroundColor,
-      this.borderColor,
-      this.placeHolder,
-      this.errorWidget,
-      this.text,
-      this.isOnlyText})
-      : super(key: key);
+  const RectangularWidget({
+    Key? key,
+    this.radius,
+    this.borderWidth,
+    this.imagePath,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.borderColor,
+    this.placeHolder,
+    this.errorWidget,
+    this.text,
+    this.isOnlyText,
+    this.headers,
+  }) : super(key: key);
 
   Widget getTextWidget() {
     return ClipRRect(
@@ -46,28 +48,30 @@ class RectangularWidget extends StatelessWidget {
       width: radius! * 2,
       padding: EdgeInsets.all(borderWidth!),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius! / 2), color: borderColor),
+        borderRadius: BorderRadius.circular(radius! / 2),
+        color: borderColor,
+      ),
       child: isOnlyText!
           ? getTextWidget()
           : imagePath!.isEmpty
               ? ClipRRect(
                   borderRadius: BorderRadius.circular(radius! / 2),
-                  child: Container(
-                    color: backgroundColor,
-                  ),
+                  child: Container(color: backgroundColor),
                 )
               : ClipRRect(
                   borderRadius: BorderRadius.circular(radius! / 2),
-                  child: imagePath!.contains("http") ? CachedNetworkImage(
-                    imageUrl: imagePath!,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) {
-                      return placeHolder!;
-                    },
-                    errorWidget: (context, url, error) {
-                      return errorWidget!;
-                    },
-                  ) : Image.asset(imagePath!, fit: BoxFit.cover,),
+                  child: imagePath!.contains("http")
+                      ? CachedNetworkImage(
+                          httpHeaders: headers,
+                          imageUrl: imagePath!,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) => placeHolder!,
+                          errorWidget: (context, url, error) => errorWidget!,
+                        )
+                      : Image.asset(
+                          imagePath!,
+                          fit: BoxFit.cover,
+                        ),
                 ),
     );
   }

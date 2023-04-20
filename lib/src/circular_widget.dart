@@ -12,30 +12,34 @@ class CircularWidget extends StatelessWidget {
   final Color? foregroundColor;
   final Widget? placeHolder;
   final Widget? errorWidget;
+  final Map<String, String>? headers;
 
-  const CircularWidget(
-      {Key? key,
-      this.radius,
-      this.borderWidth,
-      this.imagePath,
-      this.backgroundColor,
-      this.foregroundColor,
-      this.borderColor,
-      this.placeHolder,
-      this.errorWidget,
-      this.text,
-      this.isOnlyText})
-      : super(key: key);
+  const CircularWidget({
+    Key? key,
+    this.radius,
+    this.borderWidth,
+    this.imagePath,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.borderColor,
+    this.placeHolder,
+    this.errorWidget,
+    this.text,
+    this.isOnlyText,
+    this.headers,
+  }) : super(key: key);
 
   Widget getTextWidget() {
     return ClipRRect(
       borderRadius: BorderRadius.circular(radius!),
       child: Container(
-          padding: EdgeInsets.all(borderWidth!),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(radius!),
-              color: backgroundColor),
-          child: Center(child: text)),
+        padding: EdgeInsets.all(borderWidth!),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(radius!),
+          color: backgroundColor,
+        ),
+        child: Center(child: text),
+      ),
     );
   }
 
@@ -46,28 +50,25 @@ class CircularWidget extends StatelessWidget {
       width: radius! * 2,
       padding: EdgeInsets.all(borderWidth!),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius!), color: borderColor),
+        borderRadius: BorderRadius.circular(radius!),
+        color: borderColor,
+      ),
       child: isOnlyText!
           ? getTextWidget()
           : imagePath!.isEmpty
               ? ClipRRect(
                   borderRadius: BorderRadius.circular(radius!),
-                  child: Container(
-                    color: backgroundColor,
-                  ),
+                  child: Container(color: backgroundColor),
                 )
               : ClipRRect(
                   borderRadius: BorderRadius.circular(radius!),
                   child: imagePath!.contains("http")
                       ? CachedNetworkImage(
+                          httpHeaders: headers,
                           imageUrl: imagePath!,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) {
-                            return placeHolder!;
-                          },
-                          errorWidget: (context, url, error) {
-                            return errorWidget!;
-                          },
+                          placeholder: (context, url) => placeHolder!,
+                          errorWidget: (context, url, error) => errorWidget!,
                         )
                       : Image.asset(imagePath!, fit: BoxFit.cover),
                 ),
